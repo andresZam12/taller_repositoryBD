@@ -16,6 +16,7 @@ public class Main {
        
         try(Connection myConn = DatabaseConnection.getInstanceConnection()){
             Actor actor = new Actor();
+            actor.setActor_id(9999);
             actor.setFirst_name("PepitoCode2");
             actor.setLast_name("pepitoCode2");
             
