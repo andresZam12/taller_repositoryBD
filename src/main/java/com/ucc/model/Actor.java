@@ -23,6 +23,12 @@ public class Actor {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+    
+    @Override
+    public String toString() {
+        return "Actor [actor_id=" + actor_id + ", first_name=" + first_name + ", last_name=" + last_name + "]";
+    }
 
+    
     
 }
