@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ActorRepository implements IRepository {  // <— sin genéricos
+public class ActorRepository implements IRepository {  
 
     private Connection getConnection() throws SQLException {
         return DatabaseConnection.getInstanceConnection();
     }
 
-    // ===== READ ALL =====
+    //lectura de todos los actors
     @Override
     public List<Actor> findAll() throws SQLException {
         List<Actor> actors = new ArrayList<>();
@@ -35,7 +35,8 @@ public class ActorRepository implements IRepository {  // <— sin genéricos
         return actors;
     }
 
-    // ===== READ by ID =====
+    // lectura id de sak
+
     @Override
     public Optional<Actor> findById(Integer id) throws SQLException {
         String sql = "SELECT actor_id, first_name, last_name FROM sakila.actor WHERE actor_id = ?";
@@ -56,10 +57,10 @@ public class ActorRepository implements IRepository {  // <— sin genéricos
         return Optional.empty();
     }
 
-    // ===== CREATE =====
+    //crete
     @Override
     public Actor save(Actor actor) throws SQLException {
-        // En sakila.actor el ID es AUTOINCREMENT; insertamos solo nombres y recuperamos la PK
+ 
         String sql = "INSERT INTO sakila.actor (first_name, last_name) VALUES (?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -77,7 +78,7 @@ public class ActorRepository implements IRepository {  // <— sin genéricos
         return actor;
     }
 
-    // ===== UPDATE =====
+    //update
     @Override
     public boolean update(Actor actor) throws SQLException {
         String sql = "UPDATE sakila.actor SET first_name = ?, last_name = ? WHERE actor_id = ?";
@@ -89,11 +90,11 @@ public class ActorRepository implements IRepository {  // <— sin genéricos
             st.setInt(3, actor.getActor_id());
 
             int rows = st.executeUpdate();
-            return rows == 1; // true si exactamente 1 fila fue actualizada
+            return rows == 1; 
         }
     }
 
-    // ===== DELETE =====
+    //delete
     @Override
     public boolean deleteById(Integer id) throws SQLException {
         String sql = "DELETE FROM sakila.actor WHERE actor_id = ?";
@@ -102,7 +103,7 @@ public class ActorRepository implements IRepository {  // <— sin genéricos
 
             st.setInt(1, id);
             int rows = st.executeUpdate();
-            return rows == 1; // true si exactamente 1 fila fue eliminada
+            return rows == 1;
         }
     }
 }

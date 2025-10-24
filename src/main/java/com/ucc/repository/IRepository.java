@@ -10,7 +10,7 @@ public interface IRepository {
     List<Actor> findAll() throws SQLException;
     Optional<Actor> findById(Integer id) throws SQLException;
 
-    Actor save(Actor actor) throws SQLException;      // CREATE
-    boolean update(Actor actor) throws SQLException;  // UPDATE (true si afectó 1 fila)
-    boolean deleteById(Integer id) throws SQLException; // DELETE (true si afectó 1 fila)
+    Actor save(Actor actor) throws SQLException;   
+    boolean update(Actor actor) throws SQLException;  
+    boolean deleteById(Integer id) throws SQLException; 
 }
