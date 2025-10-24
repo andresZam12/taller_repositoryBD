@@ -1,15 +1,15 @@
 package com.ucc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import com.ucc.connection.DatabaseConnection;
 import com.ucc.model.Actor;
 import com.ucc.repository.ActorRepository;
 import com.ucc.repository.IRepository;
+
+// cambios en repository
 
 public class Main {
     public static void main(String[] args) throws SQLException {
